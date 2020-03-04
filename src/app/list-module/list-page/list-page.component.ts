@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListService } from '../list.service';
 
 @Component({
   selector: 'demo-list-page',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _listService: ListService) { }
 
   ngOnInit(): void {
+    this.getAllCharacters();
   }
-
+   
+  getAllCharacters(){
+    this._listService.getCharacters().subscribe(
+      res=>{
+        console.log(res)
+      },
+      err=>{
+        console.log(err)
+      }
+    )
+  }
 }
