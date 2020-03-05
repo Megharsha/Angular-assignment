@@ -5,12 +5,14 @@
 <div fxLayout="row" fxLayout.xs="column" fxFlex fxLayoutGap="20px">
     <div fxLayout="column" fxFlex="18" fxFlexOffset="20px" class="p-fixed" >
         <h3>Filter</h3>
+        <demo-filter [filterList]="filterList" (filterChange)="filterChange($event)"></demo-filter>
         <!-- <rms-filter [filterList]="filterList" (filterChange)="filterChange($event)"></rms-filter> -->
     </div>
     <div fxLayout="column" fxFlex="80">
         <div fxLayout="column">
             <div fxLayout="row wrap">
                 <h3 fxFlex="100">Selected Filters</h3>
+                <span *ngFor="let item of selectedFilter">{{item.item.name}}</span>
                 <!-- <ng-container *ngIf="selectedFilter.length > 0">
                     <rms-chips *ngFor="let item of selectedFilter" [chipsInput]="item" (removeFilter)="filterChange($event)"></rms-chips>
                 </ng-container> -->
@@ -20,7 +22,7 @@
                <div class="search">
                    <label for="search">Search By Name</label>
                     <input type="text" id="search" placeholder="" [(ngModel)]="searchName">
-                    <button color="primary" (click)="getAllCharacters()">Search</button>
+                    <button color="primary" (click)="searchUserName()">Search</button>
                </div>
                <div class="sort">
                 <select (change)="sortOrder = $event.target.value" #sortVar>
@@ -31,7 +33,7 @@
             </div>
         </div>
         <div fxLayout="row wrap" class="cards" fxFlex>
-            <div fxFlex="24" fxFlex.xs="47" class="card" *ngFor="let char of allCharacters | sort:'id':sortOrder">
+            <div fxFlex="24" fxFlex.xs="47" class="card" *ngFor="let char of allCharacters | sort:'id':sortOrder:searchName">
                <!-- <p>{{char.name}}</p> -->
                <div class="card-header">
                    <div class="card-image">

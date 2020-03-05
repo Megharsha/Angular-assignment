@@ -15,6 +15,9 @@ if(p1[attrName]>p2[attrName]) return sort==='desc' ? -1:1;
 return 0;
 
     })
+    if(args[2]){
+      data.filter(item=>item.name===args[2])
+    }
     return data;
 
   }

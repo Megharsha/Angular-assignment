@@ -13,12 +13,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { SortPipe } from './pipes/sort.pipe';
 import { FilterComponent } from './components/filter/filter.component';
-import { SearchPipe } from './pipes/search.pipe';
+// import { SearchPipe } from './pipes/search.pipe';
 // import { PaginationComponent } from './components/pagination/pagination.component';
 // import { ElaspedTimePipe } from './pipe/elasped-time/elasped-time.pipe';
 // import { SortPipe } from './pipe/sort/sort.pipe';
 @NgModule({
-  declarations: [SortPipe, FilterComponent, SearchPipe],
+  declarations: [SortPipe, FilterComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
