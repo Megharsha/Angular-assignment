@@ -7,7 +7,9 @@ import { ListService } from '../list.service';
   styleUrls: ['./list-page.component.scss']
 })
 export class ListPageComponent implements OnInit {
-
+  allCharacters:any[];
+  sortOrder: string;
+  searchName: string;
   constructor(private _listService: ListService) { }
 
   ngOnInit(): void {
@@ -16,12 +18,14 @@ export class ListPageComponent implements OnInit {
    
   getAllCharacters(){
     this._listService.getCharacters().subscribe(
-      res=>{
+      (res:any)=>{
         console.log(res)
+        this.allCharacters = res.results;
       },
       err=>{
         console.log(err)
       }
     )
   }
+  
 }
